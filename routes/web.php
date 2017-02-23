@@ -14,6 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('all', function () {
-    return "show all";
-});
+Route::get('all', 'MemberController@index');
+
+Route::get('details/{memberId}', 'MemberController@details');
+
+Route::get('addMemberForm', 'MemberController@addForm');
+
+Route::post('addMember', 'MemberController@addFilm');
