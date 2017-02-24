@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PlMember;
+use App\PlResult;
 use App\Http\Requests;
 
 class MemberController extends Controller
@@ -12,6 +13,11 @@ class MemberController extends Controller
   {
     $members = PlMember::all();
     return view('member/all-members',['members' => $members]);
+  }
+  function getTopTen()
+  {
+    $members = PlResult::getTopTen();
+    return view('result/leader-list',['members' => $members]);
   }
   function details($memberId)
   {
