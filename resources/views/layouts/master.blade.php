@@ -9,6 +9,7 @@
                 <li><a href="{{url('all')}}">View All Members</a></li>
                 <li><a href="{{url('addMemberForm')}}">Add Member</a></li>
                 <li><a href="{{url('getTopTen')}}">Top Ten</a></li>
+                <li><a href="{{url('addResultForm')}}">Add New Results</a></li>
             </ul>
         @show
 

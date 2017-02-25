@@ -25,3 +25,7 @@ Route::get('addMemberForm', 'MemberController@addForm');
 Route::post('addMember', 'MemberController@addMember');
 
 Route::post('removeMember', 'MemberController@removeMember');
+
+Route::get('addResultForm', 'ResultController@addResultForm');
+
+Route::post('addResult', 'ResultController@addResult');
