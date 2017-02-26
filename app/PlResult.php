@@ -30,7 +30,6 @@ class PlResult extends Model
     ->limit(1)
     ->get();
     return $lastId;
-
   }
 
   public static function getMemberWins($memberId)

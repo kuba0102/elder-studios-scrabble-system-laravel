@@ -3,6 +3,15 @@
 @section('title', 'Add Results')
 
 @section('content')
+@if (count($errors) > 0)
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <h1>Add Match Results</h1>
 <div class="panel panel-default">
   <div class="panel-body">

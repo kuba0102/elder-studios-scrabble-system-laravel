@@ -64,18 +64,21 @@ class MemberController extends Controller
 
   function addMember(Request $request)
   {
-    // $this->validate($request,
-    // [
-    //   'name' => 'required|max:100',
-    //   'lastName' => 'required|integer|min:1900',
-    //   'mbNum' => 'required|integer|min:1|max:300',
-    // ]);
-
+    $this->validate($request,
+    [
+      'name' => 'required|max:100',
+      'lastName' => 'required|max:100',
+      'mbNum' => 'required|numeric'
+    ]);
+    $lastId = PlMember::getLastMemberId();
+    $lastId = $lastId[0]->member_id;
+    $matchId = $lastId+1;
     $member = new PlMember();
+    $member->member_id = $matchId;
     $member->member_name = $request->name;
     $member->member_last_name=$request->lastName;
     $member->member_mobile_number=$request->mbNum;
-    $dateJoined= $request->year.$request->month.$request->day;
+    $dateJoined = date('Ymd');
     $member->member_date_joined=$dateJoined;
     $member->save();
     return redirect('all');

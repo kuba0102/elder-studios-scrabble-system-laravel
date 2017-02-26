@@ -10,10 +10,11 @@
       <li class="list-group-item">Last Name: {{$member->member_last_name}}</li>
       <li class="list-group-item">Joined Date: {{$member->member_date_joined}}</li>
       <li class="list-group-item">Contact Number: {{$member->member_mobile_number}}</li>
-      <li class="list-group-item">Wins: {{$league[0]['wins']}}</li>
-      <li class="list-group-item">Losses: {{$league[1]['losses']}}</li>
-      <li class="list-group-item">Highest Score: {{$league[2]['higScore']}}</li>
-      <li class="list-group-item">AVG Score: {{round($league[3]['avgScore'])}}</li>
+
+      <li class="list-group-item">Wins: {{@$league[0]['wins']}}</li>
+      <li class="list-group-item">Losses: {{@$league[1]['losses']}}</li>
+      <li class="list-group-item">Highest Score: {{@$league[2]['higScore']}}</li>
+      <li class="list-group-item">AVG Score: {{round(@$league[3]['avgScore'])}}</li>
     </ul>
     <form action="{{url('removeMember')}}" method="POST">
       {{ csrf_field() }}

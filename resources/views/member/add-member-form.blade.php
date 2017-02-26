@@ -30,16 +30,6 @@
         <span class="input-group-addon" id="mbNum"></span>
         <input type="number" name="mbNum" class="form-control" placeholder="Mobile Number" aria-describedby="basic-addon1">
       </div>
-      <div class="input-group">
-        <span class="input-group-addon" id="day"></span>
-        <input type="number" name="day" class="form-control" placeholder="Day" aria-describedby="basic-addon1">
-
-        <span class="input-group-addon" id="month"></span>
-        <input type="number" name="month" class="form-control" placeholder="Month" aria-describedby="basic-addon1">
-
-        <span class="input-group-addon" id="year"></span>
-        <input type="number" name="year" class="form-control" placeholder="Year" aria-describedby="basic-addon1">
-      </div>
       <input type="submit" name="submitBtn" value="Add Member">
     </form>
   </div>

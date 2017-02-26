@@ -14,6 +14,14 @@ class ResultController extends Controller
   }
   function addResult(Request $request)
   {
+    $this->validate($request,
+    [
+      'winner' => 'required|numeric',
+      'wScore' => 'required|numeric|max:9999',
+      'looser' => 'required|numeric',
+      'lScore' => 'required|numeric|max:9999',
+    ]);
+
     $winnerResult = new PlResult();
     $lastMatchId = $winnerResult->getLastMatchId();
     $looserResult = new PlResult();
