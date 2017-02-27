@@ -16,9 +16,16 @@ Route::get('/', function () {
 });
 Route::get('all', 'MemberController@index');
 
+Route::get('getTopTen', 'MemberController@getTopTen');
+
 Route::get('details/{memberId}', 'MemberController@details');
 
 Route::get('addMemberForm', 'MemberController@addForm');
 
 Route::post('addMember', 'MemberController@addMember');
+
 Route::post('removeMember', 'MemberController@removeMember');
+
+Route::get('addResultForm', 'ResultController@addResultForm');
+
+Route::post('addResult', 'ResultController@addResult');
