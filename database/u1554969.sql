@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2017 at 09:18 PM
+-- Generation Time: Feb 27, 2017 at 10:04 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -19,20 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `u1554969`
 --
-
-DELIMITER $$
---
--- Functions
---
-CREATE DEFINER=`root`@`localhost` FUNCTION `getShopSales` (`shop_name` TEXT) RETURNS DECIMAL(8,2) BEGIN 
-DECLARE shop_sales DECIMAL(8,2);
-SELECT SUM(fr.rentalrate) INTO shop_sales
-FROM frs_filmrental fr JOIN frs_shop s ON fr.shopid = s.shopid
-WHERE s.shopname = shop_name;
-RETURN shop_sales; 
-END$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
