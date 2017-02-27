@@ -25,10 +25,14 @@ class MemberController extends Controller
   {
     $league = array();
     $member = PlMember::find($memberId);
+    // Member league details
     $wins = PlResult::getMemberWins($memberId);
     $losses = PlResult::getMemberLosses($memberId);
     $higScore = PlResult::getMemberHighest($memberId);
     $avg = PlResult::getAvgHighest($memberId);
+    $topAgainst = PlResult::getMemberHighestAgainst($memberId);
+    //echo $topAgainst[0]->member_name;
+
     if($wins->isEmpty())
     {
       array_push($league,['wins' => "0"]);
@@ -46,15 +50,10 @@ class MemberController extends Controller
     {
       array_push($league,['losses' => $losses[0]->losses]);
     }
-    if(!$higScore->isEmpty())
-    {
-      array_push($league,['higScore' => $higScore[0]->result_score]);
-    }
-    if(!$avg->isEmpty())
-    {
-      array_push($league,['avgScore' => $avg[0]->avgScore]);
-    }
-    return view('member/details',['member' => $member, 'league' => $league]);
+
+      array_push($league,['higScore' => $higScore[0]->result_score,'avgScore' => $avg[0]->avgScore]);
+
+    return view('member/details',['member' => $member, 'league' => $league, 'topAgainst' => $topAgainst]);
   }
 
   function addForm()
@@ -66,9 +65,9 @@ class MemberController extends Controller
   {
     $this->validate($request,
     [
-      'name' => 'required|max:100',
-      'lastName' => 'required|max:100',
-      'mbNum' => 'required|numeric'
+    'name' => 'required|max:100',
+    'lastName' => 'required|max:100',
+    'mbNum' => 'required|numeric'
     ]);
     $lastId = PlMember::getLastMemberId();
     $lastId = $lastId[0]->member_id;

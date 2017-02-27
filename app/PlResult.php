@@ -75,4 +75,23 @@ class PlResult extends Model
     return $avg;
   }
 
+  public static function getMemberHighestAgainst($memberId)
+  {
+    $topAgainst = DB::table('pl_members')
+    ->join('pl_results', 'pl_members.member_id', '=', 'pl_results.result_member_id')
+    ->select('pl_results.result_match_id')
+    ->where('pl_results.result_match_id', '=', $memberId)
+    ->orderBy('pl_results.result_score','desc')
+    ->limit(1)
+    ->get();
+
+    $member = DB::table('pl_members')
+    ->join('pl_results', 'pl_members.member_id', '=', 'pl_results.result_member_id')
+    ->select('pl_members.member_name', 'pl_members.member_last_name')
+    ->where('pl_results.result_member_id', '!=', $memberId)
+    ->where('pl_results.result_match_id', '=',$topAgainst[0]->result_match_id)
+    ->limit(1)
+    ->get();
+    return $member;
+  }
 }
