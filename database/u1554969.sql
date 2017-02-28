@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2017 at 10:04 PM
+-- Generation Time: Feb 28, 2017 at 08:38 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -51,7 +51,11 @@ INSERT INTO `pl_members` (`member_id`, `member_name`, `member_last_name`, `membe
 (8, 'Tim', 'Whitiker', '2017-01-24', '2147483647', NULL, NULL),
 (9, 'Callum', 'Fudge', '2017-01-24', '2147483647', NULL, NULL),
 (10, 'Luke', 'Right', '2017-01-24', '2147483647', NULL, NULL),
-(11, 'Jakub', 'Chruslicki', '2017-01-27', '2147483647', NULL, NULL);
+(11, 'Jakub', 'Chruslicki', '2017-01-27', '2147483647', NULL, NULL),
+(12, 'Una', 'Davidson', '2017-02-28', '07542658741', '2017-02-28 18:03:48', '2017-02-28 18:03:48'),
+(13, 'Joseph', 'Turner', '2017-02-28', '07562145987', '2017-02-28 18:04:07', '2017-02-28 18:04:07'),
+(14, 'Lucas', 'Young', '2017-02-28', '07841987541', '2017-02-28 18:04:26', '2017-02-28 18:04:26'),
+(15, 'Frank', 'Arnold', '2017-02-28', '07425487542', '2017-02-28 18:04:49', '2017-02-28 19:27:22');
 
 -- --------------------------------------------------------
 
@@ -109,7 +113,9 @@ INSERT INTO `pl_results` (`result_id`, `result_member_id`, `result_match_status`
 (38, 1, 2, 17, 280, '2017-02-26 13:20:05', '2017-02-26 13:20:05'),
 (40, 2, 2, 18, 200, '2017-02-26 16:45:12', '2017-02-26 16:45:12'),
 (41, 1, 1, 19, 350, '2017-02-26 17:12:51', '2017-02-26 17:12:51'),
-(42, 2, 2, 19, 280, '2017-02-26 17:12:51', '2017-02-26 17:12:51');
+(42, 2, 2, 19, 280, '2017-02-26 17:12:51', '2017-02-26 17:12:51'),
+(43, 12, 1, 20, 300, '2017-02-28 19:36:57', '2017-02-28 19:36:57'),
+(44, 14, 2, 20, 280, '2017-02-28 19:36:57', '2017-02-28 19:36:57');
 
 -- --------------------------------------------------------
 
@@ -163,12 +169,12 @@ ALTER TABLE `pl_status`
 -- AUTO_INCREMENT for table `pl_members`
 --
 ALTER TABLE `pl_members`
-  MODIFY `member_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `member_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `pl_results`
 --
 ALTER TABLE `pl_results`
-  MODIFY `result_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `result_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `pl_status`
 --
