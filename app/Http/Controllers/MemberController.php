@@ -9,18 +9,29 @@ use App\Http\Requests;
 
 class MemberController extends Controller
 {
+  /*
+  Display all member list
+  */
   function index()
   {
     $members = PlMember::all();
     return view('member/all-members',['members' => $members]);
   }
 
+  /*
+  Display top ten members list
+  */
   function getTopTen()
   {
     $members = PlResult::getTopTen();
     return view('result/leader-list',['members' => $members]);
   }
 
+  /*
+  Returns all infromation
+  param: member_id member id
+  Display member information
+  */
   function details($memberId)
   {
     $league = array();
@@ -31,8 +42,6 @@ class MemberController extends Controller
     $higScore = PlResult::getMemberHighest($memberId);
     $avg = PlResult::getAvgHighest($memberId);
     $topAgainst="Non Played";
-
-    //echo $topAgainst[0]->member_name;
 
     if($wins->isEmpty())
     {
@@ -60,11 +69,17 @@ class MemberController extends Controller
     return view('member/details',['member' => $member, 'league' => $league, 'topAgainst' => $topAgainst]);
   }
 
+  /*
+  Display add member form
+  */
   function addForm()
   {
     return view('member/add-member-form');
   }
 
+  /*
+  Process infromation from add member form
+  */
   function addMember(Request $request)
   {
     $this->validate($request,
@@ -87,12 +102,20 @@ class MemberController extends Controller
     return redirect('all');
   }
 
+  /*
+  param: member_id member id
+  Display update members details
+  */
   function updateForm($memberId)
   {
     $member = PlMember::find($memberId);
     return view('member/update-member-form',['member' => $member]);
   }
 
+  /*
+  param: member_id member id
+  Process infromation from update member form
+  */
   function updateMember(Request $request, $memberId)
   {
     $this->validate($request,
@@ -109,6 +132,9 @@ class MemberController extends Controller
     return redirect('all');
   }
 
+  /*
+  Remove user and display list of all members
+  */
   function removeMember(Request $request)
   {
     PlMember::destroy($request->member);

@@ -7,9 +7,13 @@ use Illuminate\Support\Facades\DB;
 
 class PlResult extends Model
 {
+  // seting primary key for the table
   protected $primaryKey = 'result_id';
 
-
+  /*
+  get top 10 members
+  return: return top 10 members
+  */
   public static function getTopTen()
   {
     $members = DB::table('pl_members')
@@ -22,6 +26,9 @@ class PlResult extends Model
     return $members;
   }
 
+  /*
+  return: returns last match ID
+  */
   public static function getLastMatchId()
   {
     $lastId = DB::table('pl_results')
@@ -32,6 +39,10 @@ class PlResult extends Model
     return $lastId;
   }
 
+  /*
+  param: member unique ID number
+  return: return number of wins
+  */
   public static function getMemberWins($memberId)
   {
     $wins = DB::table('pl_results')
@@ -43,6 +54,10 @@ class PlResult extends Model
     return $wins;
   }
 
+  /*
+  param: member unique ID number
+  return: return number of losses
+  */
   public static function getMemberLosses($memberId)
   {
     $losses = DB::table('pl_results')
@@ -54,6 +69,10 @@ class PlResult extends Model
     return $losses;
   }
 
+  /*
+  param: member unique ID number
+  return: retrun highest score
+  */
   public static function getMemberHighest($memberId)
   {
     $highest = DB::table('pl_results')
@@ -65,6 +84,10 @@ class PlResult extends Model
     return $highest;
   }
 
+  /*
+  param: member unique ID number
+  return: retrun average score
+  */
   public static function getAvgHighest($memberId)
   {
     $avg = DB::table('pl_results')
@@ -75,6 +98,10 @@ class PlResult extends Model
     return $avg;
   }
 
+  /*
+  param: member unique ID number
+  return: retrun name and last name of a member
+  */
   public static function getMemberHighestAgainst($memberId)
   {
     $topAgainst = DB::table('pl_results')
@@ -92,14 +119,5 @@ class PlResult extends Model
     ->limit(1)
     ->get();
     return $member;
-
-    // SELECT m.member_name, m.member_last_name, r.result_match_id
-    // FROM esss_members m JOIN esss_results r on m.member_id=r.result_member_id
-    // WHERE r.result_member_id != :id && r.result_match_id =(SELECT r.result_match_id FROM esss_members m JOIN esss_results r on m.member_id=r.result_member_id
-    // WHERE r.result_member_id = :id
-    // ORDER BY r.result_score DESC LIMIT 1);";
-
-
-
   }
 }

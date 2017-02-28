@@ -3,6 +3,7 @@
 @section('title', 'Add Results')
 
 @section('content')
+<!--Error List-->
 @if (count($errors) > 0)
 <div class="alert alert-danger">
     <ul>
@@ -12,6 +13,7 @@
     </ul>
 </div>
 @endif
+<!--New Results Form-->
 <h1>Add Match Results</h1>
 <div class="panel panel-default">
   <div class="panel-body">

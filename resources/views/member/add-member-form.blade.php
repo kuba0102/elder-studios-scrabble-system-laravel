@@ -4,15 +4,17 @@
 
 @section('content')
 @if (count($errors) > 0)
+<!--Error List-->
 <div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
 </div>
 @endif
 
+<!--New member form-->
 <h1>Add New Member</h1>
 <div class="panel panel-default">
   <div class="panel-body">

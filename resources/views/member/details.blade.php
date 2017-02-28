@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('title', 'Member details')
 @section('content')
+<!--Members infromation displayed as a list-->
 <h1>Member Details</h1>
-
 <div class="panel panel-default">
   <div class="panel-body">
     <ul class="list-group">
@@ -19,6 +19,7 @@
       <li class="list-group-item">AVG Score: {{round(@$league[2]['avgScore'])}}</li>
     </ul>
 
+    <!--Extra Options-->
     <p><a href="{{url('updateMemberForm/'.$member->member_id)}}"><input type="submit" name="submitBtn" value="Update Member Details"></a></p>
 
     <form action="{{url('removeMember')}}" method="POST">
@@ -27,8 +28,6 @@
       <input type='checkbox' value='{{$member->member_id}}' id="member" name='member' required>
       <label>Remove Member</label>
     </form>
-
-
   </div>
 </div>
 

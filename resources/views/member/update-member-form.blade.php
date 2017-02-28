@@ -3,6 +3,7 @@
 @section('title', 'Add New Member')
 
 @section('content')
+<!--Error List-->
 @if (count($errors) > 0)
 <div class="alert alert-danger">
     <ul>
@@ -12,7 +13,7 @@
     </ul>
 </div>
 @endif
-
+<!--Update form-->
 <h1>Update Member Details</h1>
 <div class="panel panel-default">
   <div class="panel-body">

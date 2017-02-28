@@ -8,10 +8,19 @@ use App\Http\Requests;
 
 class ResultController extends Controller
 {
+
+  /*
+  Display add new results form
+  */
   function addResultForm()
   {
     return view('result/add-result-form');
   }
+
+  /*
+  Process infromation from add result form
+  Display list of all members
+  */
   function addResult(Request $request)
   {
     $this->validate($request,

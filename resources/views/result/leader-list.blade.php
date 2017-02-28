@@ -7,7 +7,7 @@
 <div class="panel panel-default">
   <div class="panel-body">
 
-        <!--Top 10 Members Table-->
+    <!--Top 10 Members Table-->
     <table class ="table">
       <tr>
         <th>Rank</th>
