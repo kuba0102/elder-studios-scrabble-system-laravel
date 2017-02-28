@@ -77,21 +77,29 @@ class PlResult extends Model
 
   public static function getMemberHighestAgainst($memberId)
   {
-    $topAgainst = DB::table('pl_members')
-    ->join('pl_results', 'pl_members.member_id', '=', 'pl_results.result_member_id')
+    $topAgainst = DB::table('pl_results')
     ->select('pl_results.result_match_id')
-    ->where('pl_results.result_match_id', '=', $memberId)
+    ->where('pl_results.result_member_id', '=', $memberId)
     ->orderBy('pl_results.result_score','desc')
     ->limit(1)
     ->get();
 
     $member = DB::table('pl_members')
     ->join('pl_results', 'pl_members.member_id', '=', 'pl_results.result_member_id')
-    ->select('pl_members.member_name', 'pl_members.member_last_name')
+    ->select('pl_members.member_id','pl_members.member_name', 'pl_members.member_last_name')
     ->where('pl_results.result_member_id', '!=', $memberId)
     ->where('pl_results.result_match_id', '=',$topAgainst[0]->result_match_id)
     ->limit(1)
     ->get();
     return $member;
+
+    // SELECT m.member_name, m.member_last_name, r.result_match_id
+    // FROM esss_members m JOIN esss_results r on m.member_id=r.result_member_id
+    // WHERE r.result_member_id != :id && r.result_match_id =(SELECT r.result_match_id FROM esss_members m JOIN esss_results r on m.member_id=r.result_member_id
+    // WHERE r.result_member_id = :id
+    // ORDER BY r.result_score DESC LIMIT 1);";
+
+
+
   }
 }

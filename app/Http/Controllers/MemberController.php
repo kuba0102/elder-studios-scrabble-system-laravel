@@ -30,7 +30,8 @@ class MemberController extends Controller
     $losses = PlResult::getMemberLosses($memberId);
     $higScore = PlResult::getMemberHighest($memberId);
     $avg = PlResult::getAvgHighest($memberId);
-    $topAgainst = PlResult::getMemberHighestAgainst($memberId);
+    $topAgainst="Non Played";
+
     //echo $topAgainst[0]->member_name;
 
     if($wins->isEmpty())
@@ -50,8 +51,11 @@ class MemberController extends Controller
     {
       array_push($league,['losses' => $losses[0]->losses]);
     }
-
+    if(!$higScore->isEmpty())
+    {
+      $topAgainst = PlResult::getMemberHighestAgainst($memberId);
       array_push($league,['higScore' => $higScore[0]->result_score,'avgScore' => $avg[0]->avgScore]);
+    }
 
     return view('member/details',['member' => $member, 'league' => $league, 'topAgainst' => $topAgainst]);
   }
@@ -79,6 +83,28 @@ class MemberController extends Controller
     $member->member_mobile_number=$request->mbNum;
     $dateJoined = date('Ymd');
     $member->member_date_joined=$dateJoined;
+    $member->save();
+    return redirect('all');
+  }
+
+  function updateForm($memberId)
+  {
+    $member = PlMember::find($memberId);
+    return view('member/update-member-form',['member' => $member]);
+  }
+
+  function updateMember(Request $request, $memberId)
+  {
+    $this->validate($request,
+    [
+    'name' => 'required|max:100',
+    'lastName' => 'required|max:100',
+    'mbNum' => 'required|numeric'
+    ]);
+    $member = PlMember::find($memberId);
+    $member->member_name = $request->name;
+    $member->member_last_name=$request->lastName;
+    $member->member_mobile_number=$request->mbNum;
     $member->save();
     return redirect('all');
   }

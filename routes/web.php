@@ -29,3 +29,7 @@ Route::post('removeMember', 'MemberController@removeMember');
 Route::get('addResultForm', 'ResultController@addResultForm');
 
 Route::post('addResult', 'ResultController@addResult');
+
+Route::get('updateMemberForm/{memberId}', 'MemberController@updateForm');
+
+Route::post('updateMember/{memberId}', 'MemberController@updateMember');
